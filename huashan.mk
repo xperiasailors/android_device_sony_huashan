@@ -241,12 +241,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608
 
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.camera.shutter.disable=1
+
 # call dalvik heap config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Include non-opensource parts/ proprietary files
-$(call inherit-product, vendor/sony/huashan/huashan-vendor.mk)
+$(call inherit-product-if-exists, vendor/sony/huashan/huashan-vendor.mk)
 
 # Include own Adreno blobs
-$(call inherit-product, vendor/sony/huashan/huashan-adreno-blobs.mk)
+$(call inherit-product-if-exists, vendor/sony/huashan/huashan-adreno-blobs.mk)
 
